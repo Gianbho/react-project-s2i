@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Recipe from './Recipe'
 
-const API_KEY = '1ee2b871ce394004aa41b0cc65c61718';
+// const API_KEY = '1ee2b871ce394004aa41b0cc65c61718';
+const API_KEY = process.env.API_KEY;
 
 const RecipesList = () => {
 
