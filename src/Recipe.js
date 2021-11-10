@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 
 // const API_KEY = '1ee2b871ce394004aa41b0cc65c61718';
-const API_KEY = process.env.API_KEY;
-
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Recipe = ({ id, title, image }) => {
 
