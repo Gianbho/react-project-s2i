@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import './App.css';
 
 import RecipesList from './RecipesList'
+import Recipe from './Recipe'
 import Error from './Error'
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
    <Router>
     <Routes>
       <Route path='/' element={<RecipesList />} />
+      <Route path='recipe/:id' element={<Recipe />} />
       <Route path='*' element={
         <>
           <Link to='/'>

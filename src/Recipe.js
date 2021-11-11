@@ -1,30 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route, Routes, Link, useParams } from 'react-router-dom'
 
-// const API_KEY = '1ee2b871ce394004aa41b0cc65c61718';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const Recipe = ({ id, title, image }) => {
+const Recipe = () => {
+  const [recipe, setRecipe] = useState({});
+  const [ingredients, setIngredients] = useState([]);
+  const {id} = useParams();
 
-  const [nutrients, setNutrients] = useState([]);
-  const fetchNutrients = async (id) => {
-    const response = await fetch(`https://api.spoonacular.com/recipes/${id}/nutritionWidget.json?apiKey=${API_KEY}`);
+  const fetchRecipe = async () => {
+    const response = await fetch(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${API_KEY}`);
     const data = await response.json();
-    setNutrients(data);
+    setRecipe(data);
     console.log(data);
+    setIngredients(data.extendedIngredients);
+    console.log(data.extendedIngredients);
   };
-  useState(() => {
-    fetchNutrients(id)
+
+  useEffect(() => {
+    fetchRecipe();
   }, []);
 
   return (
-      <div>
-        <h1>{title}</h1>
-        <Link to={`/${title}`}>
-          <img src={image}/>
-        </Link>
-        <p>{nutrients.calories}</p>
-      </div>
+    <div className='recipe'>
+      <h1>{recipe.title}</h1>
+      <img src={recipe.image} />
+      <ul>
+        {ingredients.map((ingredient) => {
+          return (
+            <li key={ingredient.id}>
+              {ingredient.name + ' '}
+            </li>
+          );
+        })}
+      </ul>
+      <Link to='/'><button>Back home</button></Link>
+    </div>
   );
 };
 
