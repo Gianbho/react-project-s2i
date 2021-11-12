@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 
 const RecipeContainer = ({ id, title, image }) => {
@@ -10,6 +11,7 @@ const RecipeContainer = ({ id, title, image }) => {
   //   setNutrients(data);
   //   console.log(data);
   // };
+
   useState(() => {
 
   }, []);
@@ -20,7 +22,6 @@ const RecipeContainer = ({ id, title, image }) => {
         <Link to={`/recipe/${id}`}>
           <img src={image}/>
         </Link>
-        <p>{}</p>
       </div>
   );
 };

@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getRecipe, getIngredients, getInstructions } from './actions'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes, Link, useParams } from 'react-router-dom'
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Recipe = () => {
-  const [recipe, setRecipe] = useState({});
-  const [ingredients, setIngredients] = useState([]);
-  const [instructions, setInstructions] = useState([]);
+  const recipe = useSelector(state => state.recipe);
+  const ingredients = useSelector (state => state.ingredients);
+  const instructions = useSelector(state => state.instructions);
+  const dispatch = useDispatch();
   const {id} = useParams();
 
-  const fetchRecipe = () => {
-    axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${API_KEY}`)
-    .then((response) => {
-      setRecipe(response.data);
+  const fetchRecipe = async () => {
+    const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${API_KEY}`);
+    dispatch(getRecipe(response.data));
       console.log(response.data);
-      setIngredients(response.data.extendedIngredients);
+    };
+
+  const fetchIngredients = async () => {
+    const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${API_KEY}`);
+    dispatch(getIngredients(response.data.extendedIngredients));
       console.log(response.data.extendedIngredients);
-    })
-  };
+  }
+
 
   const fetchInstructions = async () => {
-    axios.get(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${API_KEY}`)
-    .then((response) => {
-      setInstructions(response.data[0].steps);
+    const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${API_KEY}`);
+    dispatch(getInstructions(response.data[0].steps));
       console.log(response.data[0].steps);
-    })
   };
 
   useEffect(() => {
     fetchRecipe();
     fetchInstructions();
+    fetchIngredients();
   }, []);
 
   return (

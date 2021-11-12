@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getRecipes } from './actions'
 import axios from 'axios'
 import RecipeContainer from './RecipeContainer'
 
@@ -7,8 +9,15 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const RecipesList = () => {
 
-  const [recipes, setRecipes] = useState([]);
+  const recipes = useSelector(state => state.recipes);
+  const dispatch = useDispatch();
   const [error, setError] = useState();
+
+  const fetchRecipes = async () => {
+    const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?&diet=vegan&addRecipeNutrition=true&number=3&apiKey=${API_KEY}`);
+      console.log(response.data.results);
+    await dispatch(getRecipes(response.data.results));
+  }
 
 //   const fetchRecipes = async () => {
 //     const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?&diet=vegan&addRecipeNutrition=true&number=3&apiKey=${API_KEY}`);
@@ -27,12 +36,7 @@ const RecipesList = () => {
 //   };
 
   useEffect(() => {
-    axios.get(`https://api.spoonacular.com/recipes/complexSearch?&diet=vegan&addRecipeNutrition=true&number=3&apiKey=${API_KEY}`).then((response) => {
-        console.log(response.data.results);
-        setRecipes(response.data.results);
-      }).catch((error) => {
-        setError(error);
-      });
+    fetchRecipes();
   }, []);
 
   if (error) return `Error: ${error.message}`;
