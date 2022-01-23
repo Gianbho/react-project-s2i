@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRecipe, getIngredients, getInstructions } from './actions'
+import { getRecipe, getIngredients, getInstructions } from '../actions'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes, Link, useParams } from 'react-router-dom'
 
@@ -28,8 +28,12 @@ const Recipe = () => {
 
   const fetchInstructions = async () => {
     const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${API_KEY}`);
-    dispatch(getInstructions(response.data[0].steps));
+    if(response.data[0]) {
+      dispatch(getInstructions(response.data[0].steps));
       console.log(response.data[0].steps);
+    } else {
+      console.log(response.data);
+    };
   };
 
   useEffect(() => {

@@ -25,3 +25,10 @@ export const getInstructions = (prop) => {
     payload: prop,
   }
 };
+
+export const getLikedIngredients = (prop) => {
+  return{
+    type: 'GET_LIKED_ING',
+    payload: prop,
+  }
+};
