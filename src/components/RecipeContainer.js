@@ -7,7 +7,6 @@ import {RiPlantLine} from 'react-icons/ri'
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const RecipeContainer = ({ id, title, image, ingredients, diet }) => {
-
   return (
       <div>
         <h1>{title}</h1>

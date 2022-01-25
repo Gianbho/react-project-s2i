@@ -5,6 +5,7 @@ import LikedIngredientsForm from '../components/LikedIngredientsForm'
 import NotLikedIngredientsForm from '../components/NotLikedIngredientsForm'
 
 // REACT_APP_API_KEY = "ae096a3cdb31469f825397ed352cf9ac"
+// REACT_APP_API_KEY = "1ee2b871ce394004aa41b0cc65c61718"
 
 const Home = ({}) => {
   // const [state, setState] = useState({

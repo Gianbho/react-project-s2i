@@ -39,3 +39,10 @@ export const getNotLikedIngredients = (prop) => {
     payload: prop,
   }
 };
+
+export const getRecipeId = (prop) => {
+  return{
+    type: 'GET_RECIPE_ID',
+    payload: prop,
+  }
+};
