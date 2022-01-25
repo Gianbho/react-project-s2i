@@ -32,3 +32,10 @@ export const getLikedIngredients = (prop) => {
     payload: prop,
   }
 };
+
+export const getNotLikedIngredients = (prop) => {
+  return{
+    type:'GET_NOT_LIKED_ING',
+    payload: prop,
+  }
+};

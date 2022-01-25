@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import RecipesList from '../components/RecipesList'
-import IngredientsForm from '../components/IngredientsForm'
+import LikedIngredientsForm from '../components/LikedIngredientsForm'
+import NotLikedIngredientsForm from '../components/NotLikedIngredientsForm'
+
+// REACT_APP_API_KEY = "ae096a3cdb31469f825397ed352cf9ac"
 
 const Home = ({}) => {
   // const [state, setState] = useState({
@@ -9,7 +12,8 @@ const Home = ({}) => {
   //   notLikedIngredients: [1, 2, 3],
   // });
 
-  const state = useSelector(state => state.likedIngredients);
+  const likedIngredients = useSelector(state => state.likedIngredients);
+  const notLikedIngredients = useSelector(state => state.notLikedIngredients);
 
   useEffect(() => {
     //setState({...state, likedIngredients: [ing.likedFirst, ing.likedSecond, ing.likedThird]})
@@ -18,10 +22,13 @@ const Home = ({}) => {
 
   return(
   <>
-    {state.length === 3 ?
-      <RecipesList /> : <IngredientsForm />
+    {likedIngredients.length === 3 && notLikedIngredients.length === 3 ?
+      <RecipesList /> : likedIngredients.length === 3 ? <NotLikedIngredientsForm /> : <LikedIngredientsForm />
     }
-    <button onClick={() => console.log(state)}>click</button>
+    <button onClick={() => {
+      console.log(likedIngredients);
+      console.log(notLikedIngredients);
+    }}>click</button>
   </>
   );
 }

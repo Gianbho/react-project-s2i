@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {getLikedIngredients} from '../actions'
+import {getNotLikedIngredients} from '../actions'
 
-const IngredientsForm = (props) => {
+const NotLikedIngredientsForm = (props) => {
   const [state, setState] = useState({
   });
 
   let newState = [];
 
 const dispatchState = () => {
-   newState = [state.likedFirst, state.likedSecond, state.likedThird];
+   newState = [state.notLikedFirst, state.notLikedSecond, state.notLikedThird];
   if (newState[0]) {
     console.log(newState);
-    dispatch(getLikedIngredients(newState));
+    dispatch(getNotLikedIngredients(newState));
   } else {
     return false;
   }
@@ -30,7 +30,7 @@ const dispatch = useDispatch();
           e.preventDefault();
           setState({
             ...state,
-            likedFirst: e.target.value,
+            notLikedFirst: e.target.value,
           });
         }
       }>
@@ -40,7 +40,7 @@ const dispatch = useDispatch();
           e.preventDefault();
           setState({
             ...state,
-            likedSecond: e.target.value,
+            notLikedSecond: e.target.value,
           });
         }
       }>
@@ -50,7 +50,7 @@ const dispatch = useDispatch();
           e.preventDefault();
           setState({
             ...state,
-            likedThird: e.target.value,
+            notLikedThird: e.target.value,
           });
         }
       }>
@@ -60,4 +60,4 @@ const dispatch = useDispatch();
   );
 }
 
-export default IngredientsForm;
+export default NotLikedIngredientsForm;
