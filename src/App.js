@@ -5,6 +5,7 @@ import './App.css';
 import Home from './pages/Home'
 import Recipe from './pages/Recipe'
 import Error from './Error'
+import MyRecipes from './pages/MyRecipes'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Error />
         </>
       } />
+      <Route path='my-recipes' element={<MyRecipes />} />
     </Routes>
    </Router>
   );

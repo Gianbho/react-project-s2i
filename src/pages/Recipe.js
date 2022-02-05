@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getRecipe, getIngredients, getInstructions, getRecipeId } from '../actions'
+import { getRecipe, getIngredients, getInstructions } from '../actions'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes, Link, useParams } from 'react-router-dom'
 
@@ -12,8 +12,6 @@ const Recipe = () => {
   const instructions = useSelector(state => state.instructions);
   const dispatch = useDispatch();
   const {id} = useParams();
-  const myRecipes = useSelector(state => state.myRecipes);
-  const [newId, setNewId] = useState(id);
 
   const fetchRecipe = async () => {
     const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${API_KEY}`);
@@ -27,7 +25,6 @@ const Recipe = () => {
       console.log(response.data.extendedIngredients);
   }
 
-
   const fetchInstructions = async () => {
     const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${API_KEY}`);
     if(response.data[0]) {
@@ -36,6 +33,14 @@ const Recipe = () => {
     } else {
       console.log(response.data);
     };
+  };
+
+  const checkIfSaved = () => {
+      if(localStorage.getItem(`${recipe.title}`) === null){
+        localStorage.setItem(`${recipe.title}`, id);
+      } else {
+        localStorage.removeItem(`${recipe.title}`);
+      }
   };
 
   useEffect(() => {
@@ -63,8 +68,7 @@ const Recipe = () => {
         );
       })}
       <button type='button' onClick={() => {
-        dispatch(getRecipeId(newId));
-        console.log(myRecipes);
+        checkIfSaved();
       }}>Save!</button>
       <Link to='/'><button>Back home</button></Link>
     </div>
