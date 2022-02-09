@@ -6,10 +6,12 @@ import Home from './pages/Home'
 import Recipe from './pages/Recipe'
 import Error from './Error'
 import MyRecipes from './pages/MyRecipes'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
    <Router>
+   <Navbar />
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='recipe/:id' element={<Recipe />} />

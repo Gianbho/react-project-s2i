@@ -40,9 +40,16 @@ export const getNotLikedIngredients = (prop) => {
   }
 };
 
-export const saveIDs = (prop) => {
+export const saveFavRecipes = (prop) => {
   return {
-    type: 'GET_ID',
+    type: 'SAVE_FAV_RECIPE',
+    payload: prop,
+  }
+};
+
+export const removeFavRecipe = (prop) => {
+  return {
+    type: 'REMOVE_FAV_RECIPE',
     payload: prop,
   }
 };

@@ -15,9 +15,10 @@ const RecipesList = () => {
   const notLikedIngredients = useSelector(state => state.notLikedIngredients);
   const dispatch = useDispatch();
   const [error, setError] = useState();
+  const BUGGED_RECIPE = 'orange pepper';  //fetching this ingredient calls a bugged recipe
 
   const fetchRecipes = async () => {
-    const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?&diet=vegetarian&includeIngredients=${likedIngredients[0]},${likedIngredients[1]},${likedIngredients[2]}&excludeIngredients=${notLikedIngredients[0]},${notLikedIngredients[1]},${notLikedIngredients[2]}&addRecipeNutrition=true&number=5&apiKey=${API_KEY}`);
+    const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?&diet=vegetarian&includeIngredients=${likedIngredients[0]},${likedIngredients[1]},${likedIngredients[2]}&excludeIngredients=${notLikedIngredients[0]},${notLikedIngredients[1]},${notLikedIngredients[2]},${BUGGED_RECIPE}&addRecipeNutrition=true&number=5&apiKey=${API_KEY}`);
       //console.log(response.data.results);
     await dispatch(getRecipes(response.data.results));
     await console.log(response.data.results);

@@ -3,14 +3,12 @@ import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import RecipeContainer from '../components/RecipeContainer'
-import {saveIDs} from '../actions'
+import {saveFavRecipes} from '../actions'
 
 const MyRecipes = () => {
-  const iDs = useSelector(state => state.ids);
+  const favRecipes = useSelector(state => state.favRecipes);
   const dispatch = useDispatch();
 
-
-  const [favRecipes, setFavRecipes] = useState([]);
   let newFavRecipes = [];
 
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -26,7 +24,7 @@ const MyRecipes = () => {
     for(let i = 0; i < localStorage.length; i++) {
         const response = await axios.get(`https://api.spoonacular.com/recipes/${localStorage.getItem(localStorage.key(i))}/information?apiKey=${API_KEY}`);
         newFavRecipes = [...newFavRecipes, response.data];
-        setFavRecipes(newFavRecipes);
+        dispatch(saveFavRecipes(newFavRecipes));
     }
   };
 
@@ -36,7 +34,6 @@ const MyRecipes = () => {
     console.log(localStorage.key(0));
     console.log(localStorage.key(1));
     console.log(localStorage.key(2));
-    console.log(iDs);
     console.log(favRecipes);
   }, []);
 
@@ -51,7 +48,6 @@ const MyRecipes = () => {
     }
       <button onClick={() => {
         console.log(favRecipes);
-        console.log(iDs);
         }
       }>console.log state</button>
       <Link to='/'><button>Home</button></Link>

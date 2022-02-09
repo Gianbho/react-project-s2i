@@ -4,8 +4,6 @@ import {Link} from 'react-router-dom'
 import RecipesList from '../components/RecipesList'
 import LikedIngredientsForm from '../components/LikedIngredientsForm'
 import NotLikedIngredientsForm from '../components/NotLikedIngredientsForm'
-import {saveIDs} from '../actions'
-
 // REACT_APP_API_KEY = "ae096a3cdb31469f825397ed352cf9ac"
 // REACT_APP_API_KEY = "1ee2b871ce394004aa41b0cc65c61718"
 // REACT_APP_API_KEY = "f071caa85e3b452284e343e13ee1da2a"
@@ -23,12 +21,6 @@ const Home = ({}) => {
 
   useEffect(() => {
     //setState({...state, likedIngredients: [ing.likedFirst, ing.likedSecond, ing.likedThird]})
-    console.log();
-    let newIDs = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      newIDs = [...newIDs, localStorage.getItem(localStorage.key(i))];
-    }
-    dispatch(saveIDs(newIDs));
   }, [])
 
   return(
