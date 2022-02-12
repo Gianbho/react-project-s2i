@@ -1,0 +1,34 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.2s linear;
+  margin: 15px 0;
+}
+
+.search-input input {
+  width: 50%;
+}
+
+.search-input button {
+  margin-bottom: 2px;
+  margin-left: 7px;
+}
+
+.show-search {
+  height: 35px;
+}
+
+.link {
+  color: green;
+  text-decoration: none;
+}

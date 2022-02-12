@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {BiSearchAlt} from 'react-icons/bi'
 import {searchRecipes} from '../actions'
-import '../App.css'
+import '../styles/navbar.css'
 
 const Navbar = () => {
 
@@ -22,9 +22,9 @@ const Navbar = () => {
 
   return(
     <nav>
-      <div style={{width: '100%', display: 'flex', 'justifyContent': 'space-around'}}>
-        <Link to='/'>Home</Link>
-        <Link to='my-recipes'>My recipes</Link>
+      <div className='navbar'>
+        <Link to='/' className='link'>Home</Link>
+        <Link to='my-recipes' className='link'>My recipes</Link>
         <BiSearchAlt title='search' size='25px' onClick={handleToggle} style={{cursor: 'pointer'}}/>
       </div>
       <form className={isOpen ? 'search-input show-search' : 'search-input'} onSubmit={(e) => {

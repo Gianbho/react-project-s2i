@@ -15,7 +15,7 @@ const Home = ({}) => {
   //   notLikedIngredients: [1, 2, 3],
   // });
   const dispatch = useDispatch();
-  const searchQuery = useSelector(state => state.searchRecipes);
+  const searchQuery = useSelector(state => state.searchRecipes); //PROBABILMENTE NON NE HO PIU' BISOGNO
 
   const likedIngredients = useSelector(state => state.likedIngredients);
   const notLikedIngredients = useSelector(state => state.notLikedIngredients);

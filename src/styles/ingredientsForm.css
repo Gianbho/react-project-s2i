@@ -1,0 +1,17 @@
+.ingredientsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 75%;
+}
+
+.ingredientsForm input {
+  background-color: lightgreen;
+  border-radius: 7px;
+  margin: 15px 0;
+}
+
+.ingredientsForm h1 {
+  align-self: center;
+}

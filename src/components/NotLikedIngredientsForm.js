@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {getNotLikedIngredients} from '../actions'
+import '../styles/ingredientsForm.css'
 
 const NotLikedIngredientsForm = (props) => {
   const [state, setState] = useState({
@@ -21,42 +22,45 @@ const dispatchState = () => {
 const dispatch = useDispatch();
 
   return(
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      dispatchState();
-    }}>
-      <input type='text' placeholder='' value={state[0]}
-        onChange={(e) => {
-          e.preventDefault();
-          setState({
-            ...state,
-            notLikedFirst: e.target.value,
-          });
-        }
-      }>
-      </input>
-      <input type='text' placeholder='' value={state[1]}
-        onChange={(e) => {
-          e.preventDefault();
-          setState({
-            ...state,
-            notLikedSecond: e.target.value,
-          });
-        }
-      }>
-      </input>
-      <input type='text' placeholder='' value={state[2]}
-        onChange={(e) => {
-          e.preventDefault();
-          setState({
-            ...state,
-            notLikedThird: e.target.value,
-          });
-        }
-      }>
-      </input>
-      <button type='submit'>submit</button>
-    </form>
+    <>
+      <form className='ingredientsForm' onSubmit={(e) => {
+        e.preventDefault();
+        dispatchState();
+      }}>
+      <h1>Ora 3 ingredienti che odi?</h1>
+        <input type='text' placeholder='' value={state[0]}
+          onChange={(e) => {
+            e.preventDefault();
+            setState({
+              ...state,
+              notLikedFirst: e.target.value,
+            });
+          }
+        }>
+        </input>
+        <input type='text' placeholder='' value={state[1]}
+          onChange={(e) => {
+            e.preventDefault();
+            setState({
+              ...state,
+              notLikedSecond: e.target.value,
+            });
+          }
+        }>
+        </input>
+        <input type='text' placeholder='' value={state[2]}
+          onChange={(e) => {
+            e.preventDefault();
+            setState({
+              ...state,
+              notLikedThird: e.target.value,
+            });
+          }
+        }>
+        </input>
+        <button type='submit'>submit</button>
+      </form>
+    </>
   );
 }
 

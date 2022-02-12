@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Recipe from './pages/Recipe'
 import MyRecipes from './pages/MyRecipes'
 import SearchResults from './pages/SearchResults'
+import Header from './components/Header'
 import Navbar from './components/Navbar'
 import Error from './Error'
 
@@ -13,6 +14,7 @@ import Error from './Error'
 const App = () => {
   return (
    <Router>
+   <Header />
    <Navbar />
     <Routes>
       <Route path='/' element={<Home />} />

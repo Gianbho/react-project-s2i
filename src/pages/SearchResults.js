@@ -40,7 +40,7 @@ const SearchResults = () => {
 
   useEffect(() => {
     fetchRecipes();
-  }, []);
+  }, [query]);
 
   if (error) return `Error: ${error.message}`;
 
