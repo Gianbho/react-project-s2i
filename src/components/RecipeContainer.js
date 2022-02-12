@@ -11,6 +11,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 const RecipeContainer = ({ id, title, image, ingredients, diet }) => {
   const dispatch = useDispatch();
+  const [isSaved, setIsSaved] = useState(localStorage.getItem(`${title}`) ? true : false)
   return (
       <div>
         <h1>{title}</h1>
@@ -29,11 +30,13 @@ const RecipeContainer = ({ id, title, image, ingredients, diet }) => {
       <button type='button' id='btn' onClick={() => {
         if(localStorage.getItem(`${title}`) === null){
           localStorage.setItem(`${title}`, id);
+          setIsSaved(!isSaved);
         } else {
           localStorage.removeItem(`${title}`);
-          dispatch(removeFavRecipe(id))
+          dispatch(removeFavRecipe(id));
+          setIsSaved(!isSaved);
         }
-      }}>Save</button>
+      }}>{isSaved ? 'remove' : 'save'}</button>
       </div>
   );
 };

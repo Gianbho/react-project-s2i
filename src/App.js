@@ -4,9 +4,11 @@ import './App.css';
 
 import Home from './pages/Home'
 import Recipe from './pages/Recipe'
-import Error from './Error'
 import MyRecipes from './pages/MyRecipes'
+import SearchResults from './pages/SearchResults'
 import Navbar from './components/Navbar'
+import Error from './Error'
+
 
 const App = () => {
   return (
@@ -24,6 +26,7 @@ const App = () => {
         </>
       } />
       <Route path='my-recipes' element={<MyRecipes />} />
+      <Route path='search-results/:query' element={<SearchResults />} />
     </Routes>
    </Router>
   );

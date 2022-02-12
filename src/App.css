@@ -37,6 +37,13 @@
   }
 }
 
-.hiding {
-  display: hide;
+.search-input {
+  background-color: lightyellow;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.2s linear;
+}
+
+.show-search {
+  height: 35px;
 }
