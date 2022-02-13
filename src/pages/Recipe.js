@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getRecipe, getIngredients, getInstructions } from '../actions'
+import {FaRegHeart, FaHeart} from 'react-icons/fa'
+import '../App.css'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes, Link, useParams } from 'react-router-dom'
 
@@ -12,6 +14,8 @@ const Recipe = () => {
   const instructions = useSelector(state => state.instructions);
   const dispatch = useDispatch();
   const {id} = useParams();
+
+  const [isSaved, setIsSaved] = useState(localStorage.getItem(`${recipe.title}`) ? true : false);
 
   const fetchRecipe = async () => {
     const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${API_KEY}`);
@@ -35,11 +39,13 @@ const Recipe = () => {
     };
   };
 
-  const checkIfSaved = () => {
+  const handleClick = () => {
       if(localStorage.getItem(`${recipe.title}`) === null){
         localStorage.setItem(`${recipe.title}`, id);
+        setIsSaved(!isSaved)
       } else {
         localStorage.removeItem(`${recipe.title}`);
+        setIsSaved(!isSaved);
       }
   };
 
@@ -67,9 +73,7 @@ const Recipe = () => {
           <h2 key={instruction.number}>{instruction.step}</h2>
         );
       })}
-      <button type='button' onClick={() => {
-        checkIfSaved();
-      }}>Save!</button>
+      {isSaved ? <FaHeart className='heart' onClick={handleClick}/> : <FaRegHeart className='heart' onClick={handleClick} />}
       <Link to='/'><button>Back home</button></Link>
     </div>
   );
