@@ -11,7 +11,7 @@ import {removeFavRecipe} from '../actions'
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const RecipeContainer = ({ id, title, image, ingredients, diet }) => {
+const RecipeContainer = ({ id, title, image, diet }) => {
   const dispatch = useDispatch();
   const [isSaved, setIsSaved] = useState(localStorage.getItem(`${title}`) ? true : false);
 
@@ -32,18 +32,19 @@ const RecipeContainer = ({ id, title, image, ingredients, diet }) => {
           <h2>{title}</h2>
           {diet == true ? <RiPlantLine className='veg-icon' title='Vegan' size='25px'/> : null}
         </div>
-        <Link to={`/recipe/${id}`}>
-          <img src={image}/>
-        </Link>
-        <ul>
+        <img src={image}/>
+        <div className='recipe-container-btns-div'>
+          <Link to={`/recipe/${id}`} className='btn'>Open</Link>
+          {isSaved ? <FaHeart size='25px' className='heart' onClick={handleClick}/> : <FaRegHeart size='25px' className='heart' onClick={handleClick} />}
+        </div>
+        {/* <ul>
         {ingredients.map((ingredient) => {
             return (
               <li key={ingredient.id}>{ingredient.name}</li>
             );
           }
         )}
-        </ul>
-        {isSaved ? <FaHeart className='heart' onClick={handleClick}/> : <FaRegHeart className='heart' onClick={handleClick} />}
+        </ul> */}
       </div>
     );
 };

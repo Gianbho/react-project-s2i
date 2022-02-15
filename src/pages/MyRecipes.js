@@ -4,6 +4,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import RecipeContainer from '../components/RecipeContainer'
 import {saveFavRecipes} from '../actions'
+import '../styles/recipeContainer.css'
 
 const MyRecipes = () => {
   const favRecipes = useSelector(state => state.favRecipes);
@@ -41,7 +42,8 @@ const MyRecipes = () => {
     <>
       {(favRecipes.length === localStorage.length) ? (favRecipes.map((favRecipe) => {
         return (
-            <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} ingredients={favRecipe.extendedIngredients} />
+            // <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} ingredients={favRecipe.extendedIngredients} />
+            <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} />
           );
         }
       )) : <h1>Loading</h1>

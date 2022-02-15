@@ -27,7 +27,7 @@ const dispatch = useDispatch();
         e.preventDefault();
         dispatchState();
       }}>
-      <h1>3 ingredienti che ami?</h1>
+      <h1>3 INGREDIENTS YOU LOVE</h1>
         <input type='text' placeholder='' value={state[0]}
           onChange={(e) => {
             e.preventDefault();
@@ -36,7 +36,7 @@ const dispatch = useDispatch();
               likedFirst: e.target.value,
             });
           }
-        }>
+        } required>
         </input>
         <input type='text' placeholder='' value={state[1]}
           onChange={(e) => {
@@ -46,7 +46,7 @@ const dispatch = useDispatch();
               likedSecond: e.target.value,
             });
           }
-        }>
+        } required>
         </input>
         <input type='text' placeholder='' value={state[2]}
           onChange={(e) => {
@@ -56,9 +56,9 @@ const dispatch = useDispatch();
               likedThird: e.target.value,
             });
           }
-        }>
+        } required>
         </input>
-        <button type='submit'>submit</button>
+        <button className='form-btn' type='submit'>love 'em!</button>
       </form>
     </>
   );

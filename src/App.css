@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'hecho a mano';
+  src:url('fonts/HechoAMano-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'Recipety';
+  src:url('fonts/Recipety - Italic.woff') format('woff');
+}
+
 .App {
   text-align: center;
 }

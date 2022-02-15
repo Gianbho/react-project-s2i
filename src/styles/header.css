@@ -1,8 +1,22 @@
-header {
-  background: lightblue;
+.header {
+  background: #C6EBC9;
+  margin-top: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header h1 {
+  font-size: 40px;
+  padding-top: 20px;
+  margin-left: 35px;
+  font-family: 'Recipety';
+  color: #70AF85;
   margin-top: 0;
 }
 
-header h1 {
-  margin-top: 0;
+.header h4 {
+  font-family: 'Recipety';
+  margin-top: 95px;
+  margin-right: 5px;
+  color: #70AF85;
 }
