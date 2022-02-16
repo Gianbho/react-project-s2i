@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getRecipe, getIngredients, getInstructions } from '../actions'
 import {FaRegHeart, FaHeart} from 'react-icons/fa'
+import {RiPlantLine} from 'react-icons/ri'
 import '../App.css'
+import '../styles/recipe.css'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes, Link, useParams } from 'react-router-dom'
 
@@ -57,8 +59,12 @@ const Recipe = () => {
 
   return (
     <div className='recipe'>
-      <h1>{recipe.title}</h1>
+      <div className='recipe-title-div'>
+        <h1>{recipe.title}</h1>
+        {recipe.vegan == true ? <RiPlantLine className='veg-icon' title='Vegan' size='25px'/> : null}
+      </div>
       <img src={recipe.image} />
+      <h3>Ingredients</h3>
       <ul>
         {ingredients.map((ingredient) => {
           return (
@@ -68,9 +74,10 @@ const Recipe = () => {
           );
         })}
       </ul>
+      <h3>Method</h3>
       {instructions.map((instruction) => {
         return (
-          <h2 key={instruction.number}>{instruction.step}</h2>
+          <p key={instruction.number}>{instruction.step}</p>
         );
       })}
       {isSaved ? <FaHeart className='heart' onClick={handleClick}/> : <FaRegHeart className='heart' onClick={handleClick} />}

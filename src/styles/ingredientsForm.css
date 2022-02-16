@@ -2,18 +2,26 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
   margin: 0 auto;
-  width: 75%;
+  width: 100%;
 }
 
+
 .ingredientsForm input {
-  background-color: lightgreen;
-  border-radius: 7px;
+  font-family: 'Recipety';
+  text-align: center;
+  font-size: 25px;
+  height: 35px;
+  width: 65%;
+  background-color: #C6EBC9;
+  border-radius: 15px;
   margin: 15px 0;
 }
 
 .ingredientsForm h1 {
   font-family: 'Recipety';
+  font-size: 45px;
   text-align: center;
   align-self: center;
   margin-top: 25px;
@@ -21,10 +29,12 @@
 }
 
 .form-btn {
+  font-size: 21px;
   font-family: 'Recipety';
   background-color: #FFB0B0;
-  width: 15%;
+  height: 55px;
+  width: 150px;
   box-shadow: 1px 2px #FE7171;
-  border-radius: 15px;
+  border-radius: 25px;
   align-self: center;
 }

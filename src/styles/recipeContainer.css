@@ -4,12 +4,19 @@
   align-items: center;
 }
 
+.recipe-container img {
+  width: 75%;
+  height: auto;
+  border-radius: 25px;
+  box-shadow: 0 0 8px 8px white inset;
+}
+
 .recipe-container-btns-div {
-  width: 100%;
+  width: 75%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-bottom: 25px;
+  margin-bottom: 65px;
   margin-top: 15px;
 }
 
@@ -34,16 +41,20 @@
 
 .heart {
   width: 25%;
+  align-self: center;
 }
 
 .btn {
   font-family: 'Recipety';
-  width: 15%;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 10px;
+  width: 20%;
+  height: 30px;
   background-color: #FFB0B0;
   box-shadow: 1px 2px #FE7171;
   border-radius: 15px;
   align-self: center;
-  text-decoration: none;
-  text-align: center;
   color: black;
 }

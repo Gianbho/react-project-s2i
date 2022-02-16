@@ -15,7 +15,6 @@ const Home = ({}) => {
   //   notLikedIngredients: [1, 2, 3],
   // });
   const dispatch = useDispatch();
-  const searchQuery = useSelector(state => state.searchRecipes); //PROBABILMENTE NON NE HO PIU' BISOGNO
 
   const likedIngredients = useSelector(state => state.likedIngredients);
   const notLikedIngredients = useSelector(state => state.notLikedIngredients);
@@ -31,7 +30,6 @@ const Home = ({}) => {
     }
    {/* {searchQuery.length ? <h1>it works</h1> : <h1>it doesn't work</h1>} */}
     <button onClick={() => {
-      console.log(searchQuery);
       console.log(notLikedIngredients);
     }}>click</button>
     <Link to='my-recipes'>My Recipes</Link>

@@ -4,8 +4,8 @@ import '../styles/header.css'
 const Header = () => {
   return(
     <header className='header'>
-      <h1>Titolo di prova</h1>
-      <h4>sottotitolo di prova</h4>
+      <h1>TheVegProject</h1>
+      <h4>Gianluca's React.js project for Start 2 Impact</h4>
     </header>
   );
 };

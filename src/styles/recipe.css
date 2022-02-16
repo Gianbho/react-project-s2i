@@ -1,0 +1,33 @@
+.recipe {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.recipe-title-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.recipe h3 {
+  font-family: 'Recipety';
+  font-size: 30px;
+  margin-top: 25px;
+}
+
+.recipe img {
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 0 0 8px 8px white inset;
+}
+
+.recipe-title-div h1 {
+  width: 90%;
+  font-family: 'Recipety';
+  font-size: 40px;
+  text-align: left;
+}
+
+.recipe-title-div .veg-icon {
+}

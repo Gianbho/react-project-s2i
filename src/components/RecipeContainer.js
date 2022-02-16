@@ -35,7 +35,7 @@ const RecipeContainer = ({ id, title, image, diet }) => {
         <img src={image}/>
         <div className='recipe-container-btns-div'>
           <Link to={`/recipe/${id}`} className='btn'>Open</Link>
-          {isSaved ? <FaHeart size='25px' className='heart' onClick={handleClick}/> : <FaRegHeart size='25px' className='heart' onClick={handleClick} />}
+          {isSaved ? <FaHeart size='28px' className='heart' onClick={handleClick}/> : <FaRegHeart size='30px' className='heart' onClick={handleClick} />}
         </div>
         {/* <ul>
         {ingredients.map((ingredient) => {

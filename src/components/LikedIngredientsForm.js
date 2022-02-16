@@ -27,7 +27,7 @@ const dispatch = useDispatch();
         e.preventDefault();
         dispatchState();
       }}>
-      <h1>3 INGREDIENTS YOU LOVE</h1>
+      <h1>3 ingredients you love</h1>
         <input type='text' placeholder='' value={state[0]}
           onChange={(e) => {
             e.preventDefault();
