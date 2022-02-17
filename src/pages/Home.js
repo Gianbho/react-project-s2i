@@ -24,7 +24,7 @@ const Home = ({}) => {
   }, [])
 
   return(
-  <>
+  <div className='static-width'>
     {likedIngredients.length === 3 && notLikedIngredients.length === 3 ?
       <RecipesList /> : likedIngredients.length === 3 ? <NotLikedIngredientsForm /> : <LikedIngredientsForm />
     }
@@ -33,7 +33,7 @@ const Home = ({}) => {
       console.log(notLikedIngredients);
     }}>click</button>
     <Link to='my-recipes'>My Recipes</Link>
-  </>
+  </div>
   );
 }
 

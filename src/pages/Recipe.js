@@ -15,6 +15,7 @@ const Recipe = () => {
   const ingredients = useSelector (state => state.ingredients);
   const instructions = useSelector(state => state.instructions);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
   const {id} = useParams();
 
   const [isSaved, setIsSaved] = useState(localStorage.getItem(`${recipe.title}`) ? true : false);
@@ -52,13 +53,15 @@ const Recipe = () => {
   };
 
   useEffect(() => {
+    setTimeout(() => setIsLoading(!isLoading), 1000);
     fetchRecipe();
     fetchInstructions();
     fetchIngredients();
   }, []);
 
+
   return (
-    <div className='recipe'>
+    isLoading ? <div className='static-width'><h1>Loading</h1></div> : <div className='recipe static-width'>
       <div className='recipe-title-div'>
         <h1>{recipe.title}</h1>
         {recipe.vegan == true ? <RiPlantLine className='veg-icon' title='Vegan' size='25px'/> : null}
@@ -80,8 +83,7 @@ const Recipe = () => {
           <p key={instruction.number}>{instruction.step}</p>
         );
       })}
-      {isSaved ? <FaHeart className='heart' onClick={handleClick}/> : <FaRegHeart className='heart' onClick={handleClick} />}
-      <Link to='/'><button>Back home</button></Link>
+      {isSaved ? <FaHeart size='28px' className='heart' onClick={handleClick}/> : <FaRegHeart size='30px' className='heart' onClick={handleClick} />}
     </div>
   );
 };

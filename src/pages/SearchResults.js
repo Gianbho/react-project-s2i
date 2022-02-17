@@ -45,7 +45,7 @@ const SearchResults = () => {
   if (error) return `Error: ${error.message}`;
 
   return (
-    <>
+    <div className='static-width'>
       {recipes.map((recipe) => {
         console.log(recipe);
         console.log(recipe.nutrition.ingredients);
@@ -53,7 +53,7 @@ const SearchResults = () => {
           <RecipeContainer key={recipe.id} title={recipe.title} image={recipe.image} id={recipe.id} ingredients={recipe.nutrition.ingredients} diet={recipe.vegan}/>
         )}
       )}
-    </>
+    </div>
  );
 };
 

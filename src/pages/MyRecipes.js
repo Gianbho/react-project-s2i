@@ -10,6 +10,8 @@ const MyRecipes = () => {
   const favRecipes = useSelector(state => state.favRecipes);
   const dispatch = useDispatch();
 
+  const [isLoading, setIsLoading] = useState(true);
+
   let newFavRecipes = [];
 
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -30,6 +32,7 @@ const MyRecipes = () => {
   };
 
   useEffect(() => {
+    setTimeout(() => setIsLoading(!isLoading), 150);
     fetchRecipes();
     console.log(localStorage.length);
     console.log(localStorage.key(0));
@@ -39,21 +42,24 @@ const MyRecipes = () => {
   }, []);
 
   return(
-    <>
-      {(favRecipes.length === localStorage.length) ? (favRecipes.map((favRecipe) => {
-        return (
-            // <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} ingredients={favRecipe.extendedIngredients} />
-            <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} />
-          );
-        }
-      )) : <h1>Loading</h1>
-    }
-      <button onClick={() => {
-        console.log(favRecipes);
-        }
-      }>console.log state</button>
-      <Link to='/'><button>Home</button></Link>
-    </>
+    isLoading ?
+    <div className='static-width'><h1>Loading</h1></div>
+    :
+    <div className='static-width'>
+        {(favRecipes.length === localStorage.length) ? (favRecipes.map((favRecipe) => {
+          return (
+              // <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} ingredients={favRecipe.extendedIngredients} />
+              <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} />
+            );
+          }
+        )) : <h1>Loading</h1>
+      }
+        <button onClick={() => {
+          console.log(favRecipes);
+          }
+        }>console.log state</button>
+        <Link to='/'><button>Home</button></Link>
+      </div>
   );
 }
 
