@@ -19,7 +19,6 @@ const Home = () => {
       likedIngredients.length === 3 && notLikedIngredients.length === 3 ?
       <RecipesList /> : likedIngredients.length === 3 ? <NotLikedIngredientsForm /> : <LikedIngredientsForm />
     }
-   {/* {searchQuery.length ? <h1>it works</h1> : <h1>it doesn't work</h1>} */}
   </div>
   );
 }

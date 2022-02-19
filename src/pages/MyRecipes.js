@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
 import RecipeContainer from '../components/RecipeContainer'
 import {saveFavRecipes} from '../actions'
 import '../styles/recipeContainer.css'
@@ -31,7 +30,7 @@ const MyRecipes = () => {
 
   return(
     isLoading ?
-    <div className='static-width'><h1>Loading</h1></div>
+    <div className='static-width'><h1 style={{fontFamily: 'Recipety', fontSize: '75px', textAlign: 'center', marginTop: '150px'}}>Loading...</h1></div>
     :
     <div className='static-width'>
         {(favRecipes.length === localStorage.length) ? (favRecipes.map((favRecipe) => {
@@ -39,7 +38,7 @@ const MyRecipes = () => {
               <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} />
             );
           }
-        )) : <h1>Loading</h1>
+        )) : <h1 style={{fontFamily: 'Recipety', fontSize: '75px', textAlign: 'center', marginTop: '150px'}}>Loading...</h1>
       }
       </div>
   );
