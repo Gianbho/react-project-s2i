@@ -16,14 +16,7 @@ const MyRecipes = () => {
 
   const API_KEY = process.env.REACT_APP_API_KEY;
 
-  let newIDs = [];
-
   async function fetchRecipes () {
-    //   iDs.forEach(async (id) => {
-    //     const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`);
-    //     newFavRecipes = [...newFavRecipes, response.data];
-    //     setFavRecipes(newFavRecipes);
-    // });
     for(let i = 0; i < localStorage.length; i++) {
         const response = await axios.get(`https://api.spoonacular.com/recipes/${localStorage.getItem(localStorage.key(i))}/information?apiKey=${API_KEY}`);
         newFavRecipes = [...newFavRecipes, response.data];
@@ -34,11 +27,6 @@ const MyRecipes = () => {
   useEffect(() => {
     setTimeout(() => setIsLoading(!isLoading), 150);
     fetchRecipes();
-    console.log(localStorage.length);
-    console.log(localStorage.key(0));
-    console.log(localStorage.key(1));
-    console.log(localStorage.key(2));
-    console.log(favRecipes);
   }, []);
 
   return(
@@ -48,17 +36,11 @@ const MyRecipes = () => {
     <div className='static-width'>
         {(favRecipes.length === localStorage.length) ? (favRecipes.map((favRecipe) => {
           return (
-              // <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} ingredients={favRecipe.extendedIngredients} />
               <RecipeContainer key={favRecipe.id} title={favRecipe.title} image={favRecipe.image} id={favRecipe.id} diet={favRecipe.vegan} />
             );
           }
         )) : <h1>Loading</h1>
       }
-        <button onClick={() => {
-          console.log(favRecipes);
-          }
-        }>console.log state</button>
-        <Link to='/'><button>Home</button></Link>
       </div>
   );
 }

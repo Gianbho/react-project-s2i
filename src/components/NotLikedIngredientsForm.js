@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {getNotLikedIngredients} from '../actions'
 import '../styles/ingredientsForm.css'
 

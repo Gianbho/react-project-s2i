@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {Link} from 'react-router-dom'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import RecipesList from '../components/RecipesList'
 import LikedIngredientsForm from '../components/LikedIngredientsForm'
 import NotLikedIngredientsForm from '../components/NotLikedIngredientsForm'
@@ -9,30 +8,18 @@ import NotLikedIngredientsForm from '../components/NotLikedIngredientsForm'
 // REACT_APP_API_KEY = "f071caa85e3b452284e343e13ee1da2a"
 // REACT_APP_API_KEY = "08024b3c268a4224a8a6f87280e30b84"
 
-const Home = ({}) => {
-  // const [state, setState] = useState({
-  //   likedIngredients: [],
-  //   notLikedIngredients: [1, 2, 3],
-  // });
-  const dispatch = useDispatch();
+const Home = () => {
 
   const likedIngredients = useSelector(state => state.likedIngredients);
   const notLikedIngredients = useSelector(state => state.notLikedIngredients);
 
-  useEffect(() => {
-    //setState({...state, likedIngredients: [ing.likedFirst, ing.likedSecond, ing.likedThird]})
-  }, [])
-
   return(
   <div className='static-width'>
-    {likedIngredients.length === 3 && notLikedIngredients.length === 3 ?
+    {
+      likedIngredients.length === 3 && notLikedIngredients.length === 3 ?
       <RecipesList /> : likedIngredients.length === 3 ? <NotLikedIngredientsForm /> : <LikedIngredientsForm />
     }
    {/* {searchQuery.length ? <h1>it works</h1> : <h1>it doesn't work</h1>} */}
-    <button onClick={() => {
-      console.log(notLikedIngredients);
-    }}>click</button>
-    <Link to='my-recipes'>My Recipes</Link>
   </div>
   );
 }

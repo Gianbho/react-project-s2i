@@ -1,13 +1,9 @@
 import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {BiSearchAlt} from 'react-icons/bi'
-import {searchRecipes} from '../actions'
 import '../styles/navbar.css'
 
 const Navbar = () => {
-
-  const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => {
@@ -15,10 +11,6 @@ const Navbar = () => {
   };
 
   const [searchInput, setSearchInput] = useState();
-
-  const handleSubmit = () => {
-    dispatch(searchRecipes(searchInput));
-  };
 
   return(
     <nav>
@@ -29,7 +21,6 @@ const Navbar = () => {
       </div>
       <form className={isOpen ? 'search-input show-search' : 'search-input'} onSubmit={(e) => {
         e.preventDefault();
-        handleSubmit();
       }}>
         <input type='text' placeholder='' onChange={
           (e) => {

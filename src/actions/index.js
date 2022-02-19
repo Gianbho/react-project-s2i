@@ -53,10 +53,3 @@ export const removeFavRecipe = (prop) => {
     payload: prop,
   }
 };
-
-export const searchRecipes = (prop) => {
-  return {
-    type: 'SEARCH_RECIPES',
-    payload: prop,
-  }
-};

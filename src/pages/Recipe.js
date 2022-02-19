@@ -6,7 +6,7 @@ import {RiPlantLine} from 'react-icons/ri'
 import '../App.css'
 import '../styles/recipe.css'
 import axios from 'axios'
-import { BrowserRouter as Router, Route, Routes, Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -64,9 +64,9 @@ const Recipe = () => {
     isLoading ? <div className='static-width'><h1>Loading</h1></div> : <div className='recipe static-width'>
       <div className='recipe-title-div'>
         <h1>{recipe.title}</h1>
-        {recipe.vegan == true ? <RiPlantLine className='veg-icon' title='Vegan' size='25px'/> : null}
+        {recipe.vegan === true ? <RiPlantLine className='veg-icon' title='Vegan' size='25px'/> : null}
       </div>
-      <img src={recipe.image} />
+      <img src={recipe.image} alt={recipe.title + ' image'} />
       <h3>Ingredients</h3>
       <ul>
         {ingredients.map((ingredient) => {
