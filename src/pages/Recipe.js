@@ -61,7 +61,7 @@ const Recipe = () => {
 
 
   return (
-    isLoading ? <div className='static-width'><h1>Loading</h1></div> : <div className='recipe static-width'>
+    isLoading ? <div className='static-width'><h1 style={{fontFamily: 'Recipety', fontSize: '75px', textAlign: 'center', marginTop: '150px'}}>Loading...</h1></div> : <div className='recipe static-width'>
       <div className='recipe-title-div'>
         <h1>{recipe.title}</h1>
         {recipe.vegan === true ? <RiPlantLine className='veg-icon' title='Vegan' size='25px'/> : null}
