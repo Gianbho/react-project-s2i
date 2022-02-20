@@ -35,8 +35,6 @@
 
 ## About The Project
 
-![Product Name Screen Shot]
-
 This is a a simple web app that fetches vegeterian and vegan recipes  [Spoonacular](spoonacular.com) via their free [API](https://spoonacular.com/food-api/) and displays it.
 
 The user can get suggested recipes telling through the homepage inputs 3 ingredients that really likes and 3 that really hates.
