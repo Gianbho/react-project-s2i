@@ -26,13 +26,20 @@ const RecipesList = () => {
 
   return (
     <>
-      {recipes.map((recipe) => {
-        console.log(recipe);
-        console.log(recipe.nutrition.ingredients);
-        return (
-          <RecipeContainer key={recipe.id} title={recipe.title} image={recipe.image} id={recipe.id} diet={recipe.vegan}/>
-        )}
-      )}
+      { recipes.length ?
+          recipes.map((recipe) => {
+            console.log(recipes);
+            console.log(recipe.nutrition.ingredients);
+            return (
+              <RecipeContainer key={recipe.id} title={recipe.title} image={recipe.image} id={recipe.id} diet={recipe.vegan}/>
+            )}
+          ) :
+          <div className='not-found-container'>
+            <h2>So sorry, no recipes found :(</h2>
+            <h3>The API database is not well spupplied. Try to search through the Navbar or refresh the page to retry</h3>
+          </div>
+        }
+
     </>
  );
 };

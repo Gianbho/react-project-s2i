@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getRecipes } from '../actions'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
+import '../App.css'
+import '../styles/searchResults.css'
+import {Link} from 'react-router-dom'
 import RecipeContainer from '../components/RecipeContainer'
+
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -26,13 +30,18 @@ const SearchResults = () => {
 
   return (
     <div className='static-width'>
-      {recipes.map((recipe) => {
-        console.log(recipe);
-        console.log(recipe.nutrition.ingredients);
-        return (
-          <RecipeContainer key={recipe.id} title={recipe.title} image={recipe.image} id={recipe.id} diet={recipe.vegan}/>
-        )}
-      )}
+      { recipes.length ?
+          recipes.map((recipe) => {
+            console.log(recipe);
+            console.log(recipe.nutrition.ingredients);
+            return (
+              <RecipeContainer key={recipe.id} title={recipe.title} image={recipe.image} id={recipe.id} diet={recipe.vegan}/>
+            )}
+          ) : <div className='not-found-container'>
+                <h2>So sorry, no recipes found :(</h2>
+                <Link to='/' className='btn'>Back Home</Link>
+              </div>
+      }
     </div>
  );
 };
