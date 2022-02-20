@@ -15,7 +15,7 @@ const SearchResults = () => {
   const BUGGED_RECIPE = 'orange pepper';  //fetching this ingredient calls a bugged recipe
 
   const fetchRecipes = async () => {
-    const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?&diet=vegetarian&query=${query}&excludeIngredients=${BUGGED_RECIPE}&addRecipeNutrition=true&number=5&apiKey=${API_KEY}`);
+    const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?&diet=vegetarian&titleMatch=${query}&query=${query}&excludeIngredients=${BUGGED_RECIPE}&addRecipeNutrition=true&number=5&apiKey=${API_KEY}`);
     await dispatch(getRecipes(response.data.results));
     await console.log(response.data.results);
   };
