@@ -53,6 +53,7 @@ Every recipe page shows title, image, ingredients and method. Also you can save 
 ### Built With
 
 * [React](https://reactjs.org/)
+* [React-icons](https://react-icons.github.io/react-icons/)
 * [React-router](https://v5.reactrouter.com/web/guides/quick-start)
 * [Axios](https://axios-http.com/)
 * [Redux](https://redux.js.org/)
@@ -101,6 +102,8 @@ To try the app online follow the link [TheVegProjectGT](https://lucid-khorana-f1
 ## Usage
 
 The homepage will start asking for 3 ingredients you really like (all required) and then for 3 that you hate. After that it will show you a list of suggested recipes.
+
+If the recipe shown is vegan, the preview will also show a little icon of a green plant in the top right corner.
 
 The heart at the bottom of every recipe container will save in localStorage the chosen recipe.
 
