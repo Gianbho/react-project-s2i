@@ -21,7 +21,7 @@ const Recipe = () => {
   const [isSaved, setIsSaved] = useState();
 
   useEffect(() => {
-    setIsSaved(() => localStorage.getItem(`${recipe.title}`) ? true : false);
+    setIsSaved(localStorage.getItem(`${recipe.title}`));
   }, [])
 
   const fetchRecipe = async () => {
