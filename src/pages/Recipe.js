@@ -18,7 +18,11 @@ const Recipe = () => {
   const [isLoading, setIsLoading] = useState(true);
   const {id} = useParams();
 
-  const [isSaved, setIsSaved] = useState(localStorage.getItem(`${recipe.title}`) ? true : false);
+  const [isSaved, setIsSaved] = useState();
+
+  useEffect(() => {
+    setIsSaved(localStorage.getItem(`${recipe.title}`) ? true : false);
+  }, [])
 
   const fetchRecipe = async () => {
     const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=${API_KEY}`);
