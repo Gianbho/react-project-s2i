@@ -40,7 +40,7 @@ const MyRecipes = () => {
           }
         )) : <h1 style={{fontFamily: 'Recipety', fontSize: '75px', textAlign: 'center', marginTop: '150px'}}>Loading...</h1>
       }
-      </div>
+    </div>
   );
 }
 
