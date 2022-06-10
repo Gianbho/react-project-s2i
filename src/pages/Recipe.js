@@ -58,6 +58,7 @@ const Recipe = () => {
     fetchInstructions();
     fetchIngredients();
     setIsSaved(localStorage.getItem(`${recipe.title}`) ? true : false);
+    console.log(recipe.title)
   }, []);
 
 
