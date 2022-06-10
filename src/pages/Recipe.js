@@ -85,7 +85,7 @@ const Recipe = () => {
           <p key={instruction.number}>{instruction.step}</p>
         );
       })}
-      {isSaved ? <FaHeart size='28px' className='heart' onClick={handleClick}/> : <FaRegHeart size='30px' className='heart' onClick={handleClick} />}
+      {localStorage.getItem(`${recipe.title}`) ? <FaHeart size='28px' className='heart' onClick={handleClick}/> : <FaRegHeart size='30px' className='heart' onClick={handleClick} />}
     </div>
   );
 };

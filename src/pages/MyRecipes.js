@@ -24,7 +24,7 @@ const MyRecipes = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(!isLoading), 150);
+    setTimeout(() => setIsLoading(false), 150);
     fetchRecipes();
   }, []);
 
