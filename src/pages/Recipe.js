@@ -57,6 +57,7 @@ const Recipe = () => {
     fetchRecipe();
     fetchInstructions();
     fetchIngredients();
+    console.log(isSaved);
   }, []);
 
 
